@@ -1,13 +1,19 @@
 # Lake House Architecture - SPARK + MINIO + HIVE + DELATA LAKE + TRINO + SUPERSET
 
-### In This Project we have implmented incremental data load with delta lake following medallion architecture. The project is about analysis of formula1 racing
+### Project aims Implementation for Lake House Architecture using opensource tools. Implementation of incremental data load with delta lake. Key tools used in project are below
+* [Apache Spark](https://spark.apache.org)
+* [Minio](https://min.io/docs/minio/kubernetes/upstream/)
+* [Apache Hive](https://hive.apache.org)
+* [Trino](https://trino.io)
+* [Apache Superset](https://superset.apache.org)
+* [Delta Lake](https://delta.io)
 
 ## Architecture Diagram
 ![lake-house](./assets/diagram.png)
 
 
 ## Prerequisite
-- Install Docker [Docker](https://docs.docker.com/engine/install/)
+- Install [Docker](https://docs.docker.com/engine/install/)
 
 ## Getting Started
 * Clone Repository
@@ -19,18 +25,6 @@ cd lake-house
 ```
 * Change Directory to docker
 ``` cd docker ```
-### Run Following command to spinup required service follow order as mentioned
-1. First run minio object storage service 
-   * ```docker-compose -f docker-compose-minio.yaml up -d --build```
-2. Run Hive Metastore
-    * ```docker-compose -f docker-compose-hive.yaml up -d --build```
-3. Run spark Master + Server
-    * ```docker-compose -f docker-compose-spark.yaml up -d --build```
-4. Run Trino Query Engine
-    * ```docker-compose -f docker-compose-trino.yaml up -d --build```
-5. Run Visulization Tool - Superset
-    * * ```docker-compose -f docker-compose-superset.yaml up -d --build```
-
 ### We need to inclued aws-hadoop and aws-java-sdk bundle in jars folder under hive, it provide minio access to hive. Download both jars using following links
 ```commandline
 https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.3.6/hadoop-aws-3.3.6.jar
@@ -38,7 +32,31 @@ https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.3.6/hadoop-aws-3.3
 ```commandline
 https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.12.367/aws-java-sdk-bundle-1.12.367.jar 
 ```
-### No we need to create bucket in Minio and Copy our dataset to that bucket
+
+### Run Following command to spinup required service follow order as mentioned
+1. First run minio object storage service 
+```commandline
+docker-compose -f docker-compose-minio.yaml up -d --build
+```
+2. Run Hive Metastore
+```commandline
+docker-compose -f docker-compose-hive.yaml up -d --build
+```
+3. Run spark Master + Server
+```commandline
+docker-compose -f docker-compose-spark.yaml up -d --build
+```
+4. Run Trino Query Engine
+```commandline
+docker-compose -f docker-compose-trino.yaml up -d --build
+```
+5. Run Visulization Tool - Superset
+```commandline
+docker-compose -f docker-compose-superset.yaml up -d --build
+```
+
+
+### Now we need to create bucket in Minio and Copy our dataset to that bucket
 1. Visit following url ```http://localhost:9001/``` in your browser it will ask you credentials use ```root``` as username and ```password``` as password
 2. Create Bucket with name ```formula1```
 3. Copy all the folders under dataset to ```formula1``` bucket
