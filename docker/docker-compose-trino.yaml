@@ -1,0 +1,8 @@
+services:
+  trino:
+    image: trinodb/trino:latest
+    container_name: trino
+    ports:
+      - "5000:8080"
+    volumes:
+      - ./trino:/etc/trino

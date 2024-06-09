@@ -1,0 +1,6 @@
+configparser==7.0.0
+delta-spark==3.2.0
+importlib_metadata==7.1.0
+py4j==0.10.9.7
+pyspark==3.5.1
+zipp==3.19.2

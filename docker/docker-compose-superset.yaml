@@ -1,0 +1,21 @@
+services:
+  superset:
+    image: apache/superset:latest
+    container_name: superset
+    environment:
+      SUPERSET_LOAD_EXAMPLES: "no"
+      SUPERSET_SECRET_KEY: "906ef676-74df-42a8-812d-f08cc7122b39"
+      SUPERSET_META_DB_URI: "sqlite:////superset_home/superset.db"
+    ports:
+      - "8088:8088"
+    volumes:
+      - superset-home:/app/superset_home
+    command: >
+      bash -c "
+      superset db upgrade && \
+      superset fab create-admin --username admin --firstname Superset --lastname Admin --email admin@example.com --password admin && \
+      superset init && \
+      superset run -p 8088 -h 0.0.0.0 --with-threads --reload --debugger
+      "
+volumes:
+  superset-home:

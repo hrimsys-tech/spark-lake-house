@@ -1,0 +1,395 @@
+{
+  "RawCircuits": {
+    "fields": [
+      {
+        "name": "circuitId",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "circuitRef",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "country",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "location",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "lat",
+        "type": "double",
+        "nullable": true
+      },
+      {
+        "name": "lng",
+        "type": "double",
+        "nullable": true
+      },
+      {
+        "name": "alt",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "url",
+        "type": "string",
+        "nullable": true
+      }
+    ]
+  },
+  "RawConstructors": {
+    "fields": [
+      {
+        "name": "constructorId",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "constructorRef",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "nationality",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "url",
+        "type": "string",
+        "nullable": true
+      }
+    ]
+  },
+  "RawDrivers": {
+    "fields": [
+      {
+        "name": "code",
+        "type": "string",
+        "nullable": false
+      },
+      {
+        "name": "dob",
+        "type": "date",
+        "nullable": true
+      },
+      {
+        "name": "driverId",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "driverRef",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "name",
+        "type": "struct",
+        "fields": [
+          {
+            "name": "forename",
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "name": "surname",
+            "type": "string",
+            "nullable": true
+          }
+        ]
+      },
+      {
+        "name": "nationality",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "number",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "url",
+        "type": "string",
+        "nullable": true
+      }
+    ]
+  },
+  "RawLapTimes": {
+    "fields": [
+      {
+        "name": "raceId",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "driverId",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "lap",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "position",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "time",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "milliseconds",
+        "type": "integer",
+        "nullable": true
+      }
+    ]
+  },
+  "RawPitStops": {
+    "fields": [
+      {
+        "name": "raceId",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "driverId",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "stop",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "lap",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "time",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "duration",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "milliseconds",
+        "type": "integer",
+        "nullable": true
+      }
+    ]
+  },
+  "RawQualifying": {
+    "fields": [
+      {
+        "name": "qualifyId",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "raceId",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "driverId",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "constructorId",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "number",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "position",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "q1",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "q2",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "q3",
+        "type": "string",
+        "nullable": true
+      }
+    ]
+  },
+  "RawRaces": {
+    "fields": [
+      {
+        "name": "raceId",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "year",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "round",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "circuitId",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "date",
+        "type": "date",
+        "nullable": true
+      },
+      {
+        "name": "time",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "url",
+        "type": "string",
+        "nullable": true
+      }
+    ]
+  },
+  "RawResults": {
+    "fields": [
+      {
+        "name": "resultId",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "raceId",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "driverId",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "constructorId",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "number",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "grid",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "position",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "positionText",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "positionOrder",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "points",
+        "type": "float",
+        "nullable": true
+      },
+      {
+        "name": "laps",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "time",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "milliseconds",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "fastestLap",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "rank",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "fastestLapTime",
+        "type": "string",
+        "nullable": true
+      },
+      {
+        "name": "fastestLapSpeed",
+        "type": "float",
+        "nullable": true
+      },
+      {
+        "name": "statusId",
+        "type": "string",
+        "nullable": true
+      }
+    ]
+  }
+}

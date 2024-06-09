@@ -1,0 +1,34 @@
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    platform: linux/x86_64
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: metastore
+    ports:
+      - "3306:3306"
+
+  hive-metastore:
+    image: apache/hive:4.0.0
+    container_name: hive-metastore
+    ports:
+      - "9083:9083"
+    environment:
+      HIVE_METASTORE_DB_HOST: mysql
+      HIVE_METASTORE_DB_NAME: metastore
+      HIVE_METASTORE_DB_USER: root
+      HIVE_METASTORE_DB_PASS: root
+      SERVICE_NAME: metastore
+    depends_on:
+      - mysql
+    volumes:
+       - ./hive/jars/hadoop-aws-3.3.6.jar:/opt/hive/lib/hadoop-aws-3.3.6.jar
+       - ./hive/jars/aws-java-sdk-bundle-1.12.367.jar:/opt/hive/lib/aws-java-sdk-bundle-1.12.367.jar
+       - ./hive/core-site.xml:/opt/hive/conf/core-site.xml
+    command: >
+      bash -c "
+      while ! nc -z mysql 3306; do
+        sleep 1
+      done;
+      /opt/hive/bin/hive --service metastore"
